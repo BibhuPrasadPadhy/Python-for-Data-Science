@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 26 16:59:36 2017
+
+@author: bibhu
+"""
+#List in spyder
+x = [2,3,4,56,7]
+x[0]
+x[1]
+x[:4]
+
+import pandas as pd
+import numpy as np
+
+d1 = pd.read_csv('clevelanda.csv')
+
+#d1 = pd.DataFrame(data1)
+#d1
+#Structure of a data frame
+d1.info()
+
+#Basic Statistics of a Dataframe
+d1.describe()
+
+#Column names of a Dataframe
+d1.columns
+
+#head function to view top N variables in a Dataframe
+d1.head(3)
+
+#tail function to view bottom N variables in a Dataframe
+d1.tail(2)
+
+#dimensions of a Dataframe
+d1.shape
+
+#number of rows of a Dataframe
+d1.shape[0]
+
+#number of columns of a Dataframe
+
+d1.shape[1]
+
+#random sample of 3 rows
+d1.sample(n=3)
+
+#random sample of 50% of rows
+d1.sample(frac =0.5)
+
+#check missing values
+pd.isnull(d1.fee)
+
+d1.training.describe()
+d1.fee.mean()
+d1.fee.min()
+d1.groupby(d1.training).mean()
+
+d1['fee'].hist()
+d1.boxplot(column = 'tools')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

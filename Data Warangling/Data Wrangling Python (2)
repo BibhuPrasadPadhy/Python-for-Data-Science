@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 28 17:39:28 2017
+
+@author: Bibhu
+"""
+
+!pip install pandas
+!pip install tensorflow
+
+import pandas as pd
+
+
+
+test = {'manoj' : [1,2,3,4], 'suman':[3,4,5,6]}
+
+
+test1 = pd.DataFrame(test)
+
+x = pd.read_csv('Plasma.csv')
+
+x.describe()
+
+y = pd.read_csv('Diabetes.csv')
+
+#Removing Missing values from the Dataset
+y.dropna()
+
+
+y.dropna(subset = ['Number of Skin Cancer'])
+#Fill Null value with any given values
+
+y = y.drop_duplicates(subset=['Number of Skin Cancer'])
+
+x.fillna(1)
+
+data1 = {'training':['Data Science','Machine Learning','Deep Learning','Data Science'],
+         'fee':[25000,40000,50000,18000],'tools':[3,4,6,2]}
+
+data1
+
+
+d1 = pd.DataFrame(data1)
+
+data2 = {'training':['Data Science','Machine Learning','Deep Learning','Data Science Foundation'],
+         'fee':[25000,40000,50000,15000],'tools':[3,4,6,1]}
+
+data2
+
+
+d2 = pd.DataFrame(data2)
+
+
+#Table Joining on Left Side
+pd.merge(d1,d2, how = 'left', on = 'training')
+
+c = pd.merge(d1,d2, how = 'inner', on = 'training')
+
+c.fillna(15000)
+
+c.drop_duplicates()
+
+c.iloc[2:4]
+
+#Gathering Columns in Rows
+pd.melt(c)
+
+
+#d1 Matching in d2
+d1[d1.training.isin(d2.training)]
+
+pd.read_sql("SELECT* FROM my_table;",bibhu)
+
+pd.read_sql_table('my_data',bibhu)
+
+pd.to_sql('myshaped', bibhu)
+
+pd.to_csv('myshaped.csv')
+
+from sklearn import neighbors, datasets, preprocessing
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+iris = datasets.load_iris()
+X, y = iris.data[:, :2], iris.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=3)
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler().fit(X_train)
+
+standardized_X = scaler.transform(X_train)
+
+from sklearn.preprocessing import Normalizer
+
+scaler = Normalizer().fit(X_train)
+
+normalized_X = scaler.transform(X_train)
+
+from sklearn.preprocessing import Binarizer
+binarizer = Binarizer(threshold=0.0).fit(X)
+binary_X = binarizer.transform(X)
+
+
+import pandas as pd
+
+data = pd.read_csv('/Users/Bibhu/Documents/Program Files/Machine Learning Files/K-NN/KNN.csv')
+
+from sklearn.preprocessing import LabelEncoder
+
+enc = LabelEncoder()
+y = enc.fit_transform(data['diagnosis'])
+
+from sklearn.preprocessing import Imputer
+imp = Imputer(missing_values=1, strategy='mean', axis=0)
+imp.fit_transform(X_train)
+e = imp.fit_transform(X_train)
+
+import re
+mystring = "Q18. On a scale from 0 to 10 where 0 means â€˜not at all interested' and 10 means â€˜very interested', how interested are you in helping to address problems that affect poor people in poor countries?"
+newlabel = re.sub('[^A-Za-z0-9]+', 'Gupta', mystring)
